@@ -3,9 +3,10 @@
     <h1>Editing Book</h1>
       <%= render 'books/error', model: @book %>
       <%= render 'books/book', book: @book %>
+      <%= f.submit "Update Book", class: "btn btn-primary" %>
     <div class="menu">
       <%= link_to "Show", book_path(@book) %>
-     "|"
+      |
       <%= link_to "Back", books_path %>
     </div>
     </div>

@@ -2,7 +2,7 @@
   <h2>User info</h2>
   <thead>
     <tr>
-      <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
+      <%= image_tag user.get_profile_image(100,100) %>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +17,7 @@
     <tr>
       <th colspan="2">
         <%= link_to edit_user_path(current_user), class:"btn btn-default btn-block" do %>
+        <i class="fa-solid fa-user-gear"></i>
         <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
       <% end %>
       </th>
