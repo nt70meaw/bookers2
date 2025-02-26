@@ -3,7 +3,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
-    end
+  end
 
   def index
     @user = current_user
@@ -37,9 +37,13 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     if @book.update(book_params)
       flash[:notice] = "Book was successfully updated."
-      redirect_to user_path(current_user)
+      redirect_to book_path(@book)
     else
-      flash.now[:alert] = "Failed to update the book. Please check the errors."
+      if @book.errors[:title].include?("can't be blank")
+        flash[:alert] = "Title can't be blank"
+    else
+      flash[:alert] = "Failed to update the book. Please check the errors."
+    end
       render :edit
     end
   end
